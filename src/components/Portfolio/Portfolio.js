@@ -4,6 +4,8 @@ import style from "./portfolio.module.css";
 import client from "../../Assets/client.jpg"
 import gif from "../../Assets/thankyou.gif";
 import Footer from '../Footer/Footer';
+import { Grid, Typography, Button, Box, Card, CardContent, CardMedia } from "@mui/material";
+
 
 const Portfolio = () => {
   const { handleLogout, data } = useAppContext();
@@ -27,47 +29,67 @@ const Portfolio = () => {
   }
 
   return (
-    <div className={style.wrapper}>
-      <div className={style.nav}>
-        <h2>Welcome {data[0].name}</h2>
-        <button className={style.btn} onClick={handleLogout}>Logout</button>
-      </div>
-      <div className={style.details}>
-        <h1>I'm {data[0].name.split(" ")[0]} <span>{data[0].name.split(" ")[1]}</span></h1>
-        <p>This is my portfolio To showcase my
-          <br />Skills in Front-End Technologies
-        </p>
-        <a href={gif} id='download' download>Download CV</a>
+    <Box>
+    <Grid>
+         <Grid item xs={12} sx={{ borderRadius: '16px' }} className={style.nav}>
+         <Typography variant="h3">Welcome {data[0].name}</Typography>
+         <Button className={style.btn} sx={[{color:"white"}]} p={2}   onClick={handleLogout}>
+           Logout
+         </Button>
+       </Grid>
+    </Grid>
+    <Grid>
+        <Grid container item xs={12} spacing={2} >
+         <Grid item xs={12} className={style.details}>
+           <Typography variant="h3" className={style.h1}>
+             I'm {data[0].name.split(" ")[0]}{' '}
+             <span className={style.span} >{data[0].name.split(" ")[1]}</span>
+           </Typography>
+           <Typography className={style.p}>
+             This is my portfolio To showcase my<br />Skills in Front-End Technologies
+           </Typography>
+           <a href={gif}  id='download' download className={style.a}>
+             Download CV
+           </a>
+         </Grid>
+       </Grid>
+    </Grid>
+    <Grid item xs={12} md={12} lg={12}>
+        <Typography align='center'>Following are some of my clients with their details ...!</Typography>
+    </Grid>
+    <Grid container className={style.cardContainer} marginY="1rem" paddingX="1rem" xs={12} spacing={2}>
+      {slicedData.map((item) => (
+        <Grid item xs={12} sm={6} md={6} lg={4} key={item.id}>
+          <Card className="card" >
+              <CardMedia component="img" alt={item.name} image={client}/>
+                <CardContent className={style.card}>
+                  <Grid className={style.cardContent}>
+                    <Typography variant="subtitle1">Name:</Typography>
+                    <Typography variant="body1">{item.name}</Typography>
+                  </Grid>
+                  <Grid className={style.cardContent}>
+                    <Typography variant="subtitle1">Email:</Typography>
+                    <Typography variant="body1">{item.email}</Typography>
+                  </Grid>
+                  <Grid className={style.cardContent}>
+                    <Typography variant="subtitle1">Website:</Typography>
+                    <Typography variant="body1">{item.website}</Typography>
+                  </Grid>
+                  <Grid className={style.cardContent}>
+                    <Typography variant="subtitle1">Company:</Typography>
+                    <Typography variant="body1">{item.company.name}</Typography>
+                  </Grid>
+                </CardContent>
+            </Card>
+        </Grid>
+      ))}
+    </Grid>
+    <Grid container className={style.cardContainer} marginY="1rem" paddingX="1rem" xs={12} spacing={2}>
 
-      </div>
-      <p>Following are my some of clients with thier details ...!</p>
-      <div className= {style.card} >
-        {slicedData.map(item=>
-          <div className={style.cardLayout} key={item.id}>
-              <img src={client} alt={item.username} />
-            <div className={style.content}>
-              <div className={style.title}>
-                <p>Name:</p> 
-                <p>{item.name}</p>
-              </div>
-              <div className={style.description}>
-                <p>Email:</p>
-                <p>{item.email}</p>
-              </div>
-              <div className={style.website}>
-                <p>Website:</p>
-                <p>{item.website}</p>
-              </div>
-              <div className={style.company}>
-                <p>Company:</p>
-                <p>{item.company.name}</p>
-              </div>
-            </div>
-          </div>
-         )}
-      </div>
-      <Footer />
-    </div>
+        <Footer />
+
+    </Grid>
+  </Box>
   );
 };
 

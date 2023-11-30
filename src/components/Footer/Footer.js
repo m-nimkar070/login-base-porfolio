@@ -7,8 +7,8 @@ import trademark from "../../Assets/icons8-trademark-40.png"
 
 const Footer = () => {
   return (
+    <div className={style.container}>
     <div className={style.footer}>
-
       <div className={style.row}>
         <div className={style.col}>
             <p>Address: <span>Bengaluru, Karnataka 560045</span></p>
@@ -26,7 +26,7 @@ const Footer = () => {
             <a href='https://github.com/m-nimkar070'><img className={style.imgcol} src={gitLogo} alt="GitHub logo" /></a>
         </div>
       </div>
-
+      </div>
     </div>
   )
 }
