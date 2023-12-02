@@ -1,42 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-.container{
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  border-radius: 20px;
+  background-image: linear-gradient(45deg, orange, yellow 45%, magenta);
 }
-.footer {
-    width: 80%;
-    color: wheat;
-    background-color: #171616;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 600;
-    padding: 20px;
-    margin: 10px 0;
-    border-radius: 5px;
-    background-image: linear-gradient(45deg , orange , yellow 45% , magenta);
+.main {
+  width: 80%;
+  font-family: "Roboto Mono", monospace;
+  display: flex;
+  justify-content: space-evenly;
 }
-  
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.link {
+  margin: 0px 5px;
 }
-
-.imgcol {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    cursor: pointer;
+@media screen and (max-width: 480px) {
+  .main {
+    display: block;
+    width: 100%;
+  }
 }
-a{
-    color: aliceblue;
-    text-decoration: none;
-    
-}
-
-.trademark{
-    width: 20px;
-    height: 20px;
-}
-  
